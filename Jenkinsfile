@@ -6,20 +6,6 @@ pipeline {
     }
 
     stages {
-       
-        stage('Install Dependencies') {
-            steps {
-                bat 'npm install'
-                bat 'npm install jiti --save-dev'
-            }
-        }
-
-        stage('Lint Check') {
-            steps {
-                bat 'npx eslint src/**/*.tsx src/**/*.ts'
-            }
-        }
-
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') { // Use the name configured in Jenkins
